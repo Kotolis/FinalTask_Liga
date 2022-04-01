@@ -75,6 +75,10 @@ public class ProductPage {
         }
     }
 
+    //public void nameForCheckLoad() {
+      //  nameToCheckPageLoad.shouldBe(Condition.visible);
+    //}
+
     public boolean checkAppleName(){
         boolean flag = true;
 
@@ -98,6 +102,11 @@ public class ProductPage {
             }
         }
         return flag;
+    }
+
+    public void nameProductToCheckPageLoad(){
+        nameToCheckPageLoad.shouldBe(Condition.visible);
+
     }
 
 }

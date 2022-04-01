@@ -45,11 +45,10 @@ public class StepsProductPage {
     }
 
     public void checkThatPageWithFilterOpen() {
-        if (productPage.getPageArea().isDisplayed()) {
-            Assert.assertEquals( WebDriverRunner.url(), "https://www.mvideo.ru/product-list-page?q=apple&category=smartfony-205&sort=price_desc");
-
-        }
+        productPage.nameProductToCheckPageLoad();
+        Assert.assertEquals( WebDriverRunner.url(), "https://www.mvideo.ru/product-list-page?q=apple&category=smartfony-205&sort=price_desc");
     }
+
 
     public void comparisonPriceDescending(){
         productPage.scrollPageProduct();
