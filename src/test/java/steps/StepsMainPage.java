@@ -103,9 +103,9 @@ public class StepsMainPage {
 
     public void clickTwoItems() {
         workArea.addMultipleProducts();
-        workArea.clickMostViewedProducts(1);
+        workArea.clickFewProducts(1);
         header.getNumberOnTheCart("1");
-        workArea.clickMostViewedProducts(2);
+        workArea.clickFewProducts(2);
         header.getNumberOnTheCart("2");
 
     }
@@ -158,7 +158,39 @@ public class StepsMainPage {
         Assert.assertTrue(actualCondition);
     }
 
+    public void clickOnButtonComparisonInHeader(){
+        header.click(header.getComparison());
+    }
 
+    public void clickOnButtonFavoritesInHeader(){
+        header.click(header.getFavorites());
+    }
+
+    public void clickOnLocationButton(){
+        header.click(header.getLocationButton());
+    }
+
+    public void checkThatWindowSelectCityIsDisplayed() {
+        boolean actualCondition = header.checkForDisplay(header.getWindowSelectCity());
+        Assert.assertTrue(actualCondition);
+    }
+
+    public void selectDesiredCity(String city){
+        header.findCity("Краснодар");
+    }
+
+    public void modalWindowIsntDisplay(){
+        boolean actualCondition = header.checkForDisplay(header.getWindowSelectCity());
+        Assert.assertFalse(actualCondition);
+    }
+
+    public void displayTitleToCheckPageLoading(){
+        workArea.nameDisplayForDownloadVerification();
+    }
+
+    public void checkDisplayedLocator(String text){
+        Assert.assertTrue(header.displayedLocator("Краснодар"));
+    }
 }
 
 

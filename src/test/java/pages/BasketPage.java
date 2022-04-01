@@ -62,11 +62,11 @@ public class BasketPage {
      }
 
      public int getCardPrice(){
-        return Integer.parseInt(addCardPrice.getText());
+        return Integer.parseInt(addCardPrice.text().replaceAll("\\D+",""));
      }
 
      public int getOrderPrice(){
-        return Integer.parseInt(addOrderPrice.getText());
+        return Integer.parseInt(addOrderPrice.text().replaceAll("\\D+",""));
      }
 
     public boolean comparisonNameInMainPageAndCart() {

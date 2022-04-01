@@ -10,21 +10,21 @@ import session.PriceNameButtonBueForCard;
 public class ProductPage {
 
     private SelenideElement pageArea;
-    private SelenideElement firstContainer;
     private SelenideElement filterSort;
     private SelenideElement containerFiltersSort;
     private SelenideElement filterFirstMoreExpensive;
+    private SelenideElement nameToCheckPageLoad;
 
     public ProductPage(){
         pageArea = Selenide.$x("//div[contains(@class, 'plp__card-grid')]");
-
-        firstContainer = Selenide.$x("//div[contains(@class, 'ng-star-inserted product-cards-row')][1]");
 
         filterSort = Selenide.$x("//mvid-dropdown[contains(@class, 'ng-star-inserted')]//span[contains(text(), 'Сначала популярные')]");
 
         containerFiltersSort = Selenide.$x("//mvid-product-list-controls[contains(@class, 'ng-star-inserted')]//div[contains(@class, 'dropdown__options')]");
 
         filterFirstMoreExpensive = Selenide.$x("//div[contains(text(), 'Сначала дороже')]");
+
+        nameToCheckPageLoad = Selenide.$x("//a[contains(@class, 'product-title__text product-title--clamp')][1]");
 
     }
 
@@ -46,17 +46,30 @@ public class ProductPage {
     @FindBy(xpath = "//mvid-button[contains(@class, 'flexible-width button_without-icon')]//span")
     private ElementsCollection elementsButtonAddCart;
 
+    @FindBy(xpath = "//div[contains(@class, 'product-checkout__button compare-button-block ng-star-inserted')]")
+    private ElementsCollection buttonComparison;
+
+    @FindBy(xpath = "//div[contains(@class, 'product-checkout__button wishlist-button-block ng-star-inserted')]")
+    private ElementsCollection buttonFavorites;
+
+
     public void addPageAreaProducts() {
         PriceNameButtonBueForCard.clearCartList();
         PriceNameButtonBueForCard.elementsCard(elementsWithName, elementsWithPrice, elementsButtonAddCart);
 
     }
+    public void addPageAreaProductsComparison(){
+        PriceNameButtonBueForCard.clearCartList();
+        PriceNameButtonBueForCard.elementsCard(elementsWithName, elementsWithPrice,buttonComparison);
+    }
 
-    public void scrollPageProduct () {
-        pageArea.shouldBe(Condition.visible);
-        Selenide.sleep(4000);
-        //firstContainer.shouldBe(Condition.visible);
-        //Selenide.sleep(4000);
+    public void addPageAreaProductsFavorites(){
+        PriceNameButtonBueForCard.clearCartList();
+        PriceNameButtonBueForCard.elementsCard(elementsWithName, elementsWithPrice,buttonFavorites);
+    }
+
+    public void scrollPageProduct() {
+        nameToCheckPageLoad.shouldBe(Condition.visible);
         for (int i = 0; i < elementsWithName.size(); i++) {
             elementsWithName.get(i).shouldBe(Condition.visible).scrollIntoView("{block: \"center\"}");
         }

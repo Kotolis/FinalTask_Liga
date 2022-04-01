@@ -52,4 +52,19 @@ public class TestsMainPage {
         closeWebDriver();
 
     }
+
+    @Test
+    public void checkCityChange(){
+        Configuration.pageLoadTimeout = 200000;
+        Selenide.open("https://www.mvideo.ru/");
+        stepsMainPage.clickOnLocationButton();
+        stepsMainPage.checkThatWindowSelectCityIsDisplayed();
+        stepsMainPage.selectDesiredCity("Краснодар");
+        stepsMainPage.displayTitleToCheckPageLoading();
+        stepsMainPage.modalWindowIsntDisplay();
+        stepsMainPage.checkDisplayedLocator("Краснодар");
+
+
+
+    }
 }

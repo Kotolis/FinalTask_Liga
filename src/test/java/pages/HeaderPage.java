@@ -3,8 +3,11 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.By;
 
 import java.util.Objects;
+
+import static com.codeborne.selenide.Selenide.$x;
 
 
 public class HeaderPage {
@@ -21,6 +24,11 @@ public class HeaderPage {
     private SelenideElement phoneInputField;
     private SelenideElement buttonContinue;
     private SelenideElement linkLegalEntities;
+    private SelenideElement amountsItemsInComparison;
+    private SelenideElement amountsItemsInFavorites;
+    private SelenideElement locationButton;
+    private SelenideElement windowSelectCity;
+    private SelenideElement selectedCity;
 
 
     public HeaderPage(){
@@ -51,9 +59,18 @@ public class HeaderPage {
 
         linkLegalEntities = Selenide.$x("//div[contains(@class, 'column--link-btn')]/button[text() = '  Для юридических лиц ']");
 
+        amountsItemsInComparison = Selenide.$x("//mvid-header-icon[@buttontext='Сравнить товары']//mvid-bubble");
+
+        amountsItemsInFavorites = Selenide.$x("//mvid-header-icon[@buttontext='К списку избранного']//mvid-bubble");
+
+        locationButton = Selenide.$x("//div[contains(@class, 'location ng-tns-c230-1')]");
+
+        windowSelectCity = Selenide.$x("//div[contains(@class, 'modal-layout')][.//h3[contains(text(), 'Выберите город')]]");
+
+        selectedCity = Selenide.$x("//span[text() = '%s']");
+
 
     }
-
 
     public SelenideElement getStatusOrder(){return addStatusOrder;}
     public SelenideElement getRegistration(){return addRegistration;}
@@ -67,6 +84,8 @@ public class HeaderPage {
     public SelenideElement getPhoneInputField(){return phoneInputField;}
     public SelenideElement getButtonContinue(){return buttonContinue;}
     public SelenideElement getLinkLegalEntities(){return linkLegalEntities;}
+    public SelenideElement getLocationButton(){return locationButton;}
+    public SelenideElement getWindowSelectCity(){return windowSelectCity;}
 
 
     public  boolean checkForDisplay(SelenideElement elem){
@@ -100,6 +119,10 @@ public class HeaderPage {
         getAddToCart().scrollIntoView("{block: \"center\"}").shouldBe(Condition.visible).click();
     }
 
+    public void click(SelenideElement element){
+        element.scrollIntoView("{block: \"center\"}").shouldBe(Condition.visible).click();
+    }
+
     public void enterValue(String value){
         inputLine.setValue(value);
     }
@@ -116,8 +139,21 @@ public class HeaderPage {
         addRegistration.scrollIntoView("{block: \"center\"}").shouldBe(Condition.visible).click();
     }
 
+    public void getNumberOnComparison(String amount){
+        amountsItemsInComparison.shouldBe(Condition.text(amount));
+    }
 
+    public void getNumberOnFavorites(String amount){
+        amountsItemsInFavorites.shouldBe(Condition.text(amount));
+    }
 
+    public void findCity(String city){
+        $x("//ul[contains(@class, 'location-select__location-list')]/li[contains(text(), '"+city+"')]").scrollIntoView("{block: 'center'}").click();
+    }
 
+    public boolean displayedLocator(String text){
+       return locationButton.shouldBe(Condition.text(text)).isDisplayed();
+
+    }
 
 }

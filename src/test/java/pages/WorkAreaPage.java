@@ -76,10 +76,12 @@ public class WorkAreaPage {
         PriceNameButtonBueForCard.elementsCard(nameMostViewed, priceMostViewed, addToCartMostViewed);
 
     }
-    public void clickMostViewedProducts(int productNumber){
+
+    public void clickFewProducts(int productNumber){
         PriceNameButtonBueForCard.goods.get(productNumber-1).button.scrollIntoView("{block: \"center\"}").click();
 
     }
+
     public void titleMostViewedVisible(){
         addTitleMostViewed.shouldBe(Condition.visible);
     }
@@ -87,6 +89,10 @@ public class WorkAreaPage {
 
     public void scrollToFirstBlockMostViewed(){
         addBlockMostViewed1.scrollIntoView("{block: \"center\"}");
+    }
+
+    public void nameDisplayForDownloadVerification(){
+        getTitleMostViewed().shouldBe(Condition.visible);
     }
 
 

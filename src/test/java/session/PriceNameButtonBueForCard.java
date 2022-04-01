@@ -13,6 +13,7 @@ public class PriceNameButtonBueForCard {
 
     public static ArrayList<PriceNameButtonBueForCard> goods = new ArrayList<>();
 
+
     public static void elementsCard(ElementsCollection name, ElementsCollection price, ElementsCollection button){
         int count = name.size();
         for (int i = 0; i<count; i++){
@@ -21,10 +22,10 @@ public class PriceNameButtonBueForCard {
 
     }
 
-
     public static void clearCartList(){
         goods.clear();
     }
+
 
     public PriceNameButtonBueForCard(String name, int price,SelenideElement button){
         this.name=name;

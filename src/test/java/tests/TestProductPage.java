@@ -44,7 +44,5 @@ public class TestProductPage {
         stepsProductPage.comparisonPriceDescending();
         closeWebDriver();
 
-
-
     }
 }

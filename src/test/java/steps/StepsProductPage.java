@@ -56,4 +56,36 @@ public class StepsProductPage {
         productPage.addPageAreaProducts();
         Assert.assertTrue(productPage.priceComparison());
     }
+
+    public void addComparisonElementsInList(){
+        productPage.scrollPageProduct();
+        productPage.addPageAreaProductsComparison();
+    }
+
+
+    public void addThreeItemForComparison(){
+        workArea.clickFewProducts(1);
+        header.getNumberOnComparison( "1");
+        workArea.clickFewProducts(2);
+        header.getNumberOnComparison("2");
+        workArea.clickFewProducts(3);
+        header.getNumberOnComparison("3");
+
+    }
+
+    public void addFavoritesElementsInList(){
+        productPage.scrollPageProduct();
+        productPage.addPageAreaProductsFavorites();
+    }
+
+    public void addThreeItemForFavorites(){
+        workArea.clickFewProducts(1);
+        header.getNumberOnFavorites( "1");
+        workArea.clickFewProducts(2);
+        header.getNumberOnFavorites("2");
+        workArea.clickFewProducts(3);
+        header.getNumberOnFavorites("3");
+
+    }
+
 }
