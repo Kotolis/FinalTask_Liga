@@ -2,6 +2,7 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import steps.StepsMainPage;
 import static com.codeborne.selenide.Selenide.*;
@@ -61,9 +62,13 @@ public class TestsMainPage {
         stepsMainPage.checkThatWindowSelectCityIsDisplayed();
         stepsMainPage.selectDesiredCity("Краснодар");
         stepsMainPage.displayButtonToCheckPageLoading();
-        stepsMainPage.modalWindowIsntDisplay();
         stepsMainPage.checkDisplayedLocator("Краснодар");
         closeWebDriver();
 
+    }
+
+    @AfterMethod
+    public void close(){
+        closeWebDriver();
     }
 }

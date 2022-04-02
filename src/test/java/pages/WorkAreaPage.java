@@ -16,6 +16,7 @@ public class WorkAreaPage {
     private SelenideElement addBlockMostViewedWithText;
     private SelenideElement addBlockMostViewed2;
 
+
     public WorkAreaPage() {
         addToCartProductDay = Selenide.$x("//mvid-day-product[contains(@class, ' main ng-star-inserted')]/button");
 
@@ -28,6 +29,7 @@ public class WorkAreaPage {
         addBlockMostViewedWithText = Selenide.$x("//mvid-simple-product-collection-mp[1]//h2[text() = 'Самые просматриваемые']");
 
         addBlockMostViewed2 = Selenide.$x("//mvid-simple-product-collection-mp[2]");
+
 
     }
 
@@ -50,6 +52,7 @@ public class WorkAreaPage {
     public SelenideElement getBlockMostViewedWithText(){return addBlockMostViewedWithText;}
 
     public SelenideElement getBlockMostViewed2(){return addBlockMostViewed2;}
+
 
 
     public void addToCartProductDayDisplayed(){
@@ -83,5 +86,7 @@ public class WorkAreaPage {
     public void buttonDisplayForDownloadVerification(){
         addToCartProductDay.shouldBe(Condition.visible);
     }
+
+
 
 }

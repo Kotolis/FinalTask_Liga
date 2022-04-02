@@ -15,6 +15,7 @@ public class StepsProductPage {
     private ProductPage productPage = Selenide.page(new ProductPage());
 
     public void checkThatPageWithAppleOpen() {
+        productPage.nameProductToCheckPageLoad();
         if (productPage.getPageArea().isDisplayed()) {
             Assert.assertEquals( WebDriverRunner.url(), "https://www.mvideo.ru/product-list-page?q=apple&category=smartfony-205");
         }

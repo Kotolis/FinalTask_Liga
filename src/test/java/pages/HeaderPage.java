@@ -84,6 +84,7 @@ public class HeaderPage {
 
 
     public  boolean checkForDisplay(SelenideElement elem){
+        elem.shouldBe(Condition.visible);
         return elem.isDisplayed();
     }
 

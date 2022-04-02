@@ -1,5 +1,6 @@
 package steps;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import org.testng.Assert;
@@ -14,17 +15,16 @@ public class StepsBasketPage {
 
 
     public void checkThatUrlBasketCorrect(){
-        Assert.assertEquals("https://www.mvideo.ru/cart", WebDriverRunner.url());
+        Selenide.sleep(3000);
+        Assert.assertEquals(WebDriverRunner.url(),"https://www.mvideo.ru/cart");
     }
 
     public void checkThatTitleBasketIsDisplayed(){
+        basket.getTitleBasket().shouldBe(Condition.visible);
         boolean actualCondition = header.checkForDisplay(basket.getTitleBasket());
         Assert.assertTrue(actualCondition);
     }
 
-   // public void checkThatTitleInBasketAndMainPageSame(){
-     //   Assert.assertEquals(workAreaPage.getTitleProductDay(), basket.getTitleBasket());
-   // }
 
     public void checkThatOrderingButtonIsDisplayed(){
         boolean actualCondition = header.checkForDisplay(basket.getOrderingButton());

@@ -2,6 +2,7 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import steps.StepsComparisonPage;
 import steps.StepsMainPage;
@@ -28,6 +29,11 @@ public class TestComparisonPage {
         stepsMainPage.clickOnButtonComparisonInHeader();
         stepsComparisonPage.checkThatTitleComparisonPageIsDisplayed();
         stepsComparisonPage.checkThatNamesSameInComparisonAndProductPage();
+        closeWebDriver();
+    }
+
+    @AfterMethod
+    public void close(){
         closeWebDriver();
     }
 }

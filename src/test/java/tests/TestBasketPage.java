@@ -2,6 +2,7 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import steps.StepsBasketPage;
 import steps.StepsMainPage;
@@ -37,10 +38,15 @@ public class TestBasketPage {
         stepsMainPage.checkThatTitleMostViewedIsDisplayed();
         stepsMainPage.clickTwoItems();
         stepsMainPage.clickOnButtonBasket();
+        stepsBasketPage.checkThatUrlBasketCorrect();
         stepsBasketPage.checkComparisonNameInMainPageAndCart();
         stepsBasketPage.comparisonPriceInCardAndOrder();
         closeWebDriver();
 
+    }
+    @AfterMethod
+    public void close(){
+        closeWebDriver();
     }
 }
 

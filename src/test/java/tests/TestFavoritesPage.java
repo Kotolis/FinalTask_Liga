@@ -2,6 +2,7 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import steps.StepsComparisonPage;
 import steps.StepsFavoritesPage;
@@ -31,6 +32,11 @@ public class TestFavoritesPage {
         stepsMainPage.clickOnButtonFavoritesInHeader();
         stepsFavoritesPage.checkThatTitleFavoritesPageIsDisplayed();
         stepsFavoritesPage.checkThatNamesSameInFavoritesAndProductPage();
+        closeWebDriver();
+    }
+
+    @AfterMethod
+    public void close(){
         closeWebDriver();
     }
 }

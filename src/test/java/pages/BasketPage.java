@@ -14,6 +14,7 @@ public class BasketPage {
     private SelenideElement addOrderPrice;
     private SelenideElement addSumProduct;
 
+
     public BasketPage() {
         addTitleBasket = Selenide.$x("//span[@class = 'c-header-checkout__logo u-ml-0' and text() = 'Моя корзина']");
 
@@ -27,6 +28,8 @@ public class BasketPage {
 
         addSumProduct = Selenide.$x("//span[contains(@class, 'c-cost-line__text')]");
 
+
+
     }
 
     public SelenideElement getTitleBasket(){return addTitleBasket;}
@@ -34,6 +37,7 @@ public class BasketPage {
     public SelenideElement textAmountProducts(){return addTextAmountProducts;}
 
     public SelenideElement getOrderingButton(){return addOrderingButton;}
+
 
 
     @FindBy(xpath = "//a[contains(@class, 'c-cart-item__title')]")

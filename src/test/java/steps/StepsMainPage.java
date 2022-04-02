@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import org.testng.Assert;
+import pages.BasketPage;
 import pages.HeaderPage;
 import pages.WorkAreaPage;
 
@@ -11,6 +12,7 @@ public class StepsMainPage {
 
     private HeaderPage header = Selenide.page(new HeaderPage());
     private WorkAreaPage workArea = Selenide.page(new WorkAreaPage());
+
 
 
     public void checkThatButtonStatusOrderIsDisplayed() {
@@ -66,6 +68,7 @@ public class StepsMainPage {
 
     public void clickOnButtonAddToCartProductDay() {
         workArea.addToCartProductDayDisplayed();
+
     }
 
     public void checkThatBlockWithProductDayIsDisplayed() {
@@ -84,8 +87,11 @@ public class StepsMainPage {
     }
 
     public void clickOnButtonBasket() {
+        header.getAddToCart().shouldBe(Condition.visible);
         header.click(header.getAddToCart());
+
     }
+    //if (header.checkForEnabled(header.getAddToCart())) {
 
     public void checkThatTitleMostViewedIsDisplayed() {
         boolean actualCondition = header.checkForDisplay(workArea.getTitleMostViewed());
@@ -180,10 +186,6 @@ public class StepsMainPage {
         header.closeForModalWindow();
     }
 
-    public void modalWindowIsntDisplay(){
-        boolean actualCondition = header.checkForDisplay(header.getWindowSelectCity());
-        Assert.assertFalse(actualCondition);
-    }
 
     public void displayButtonToCheckPageLoading(){
         workArea.buttonDisplayForDownloadVerification();
@@ -192,6 +194,7 @@ public class StepsMainPage {
     public void checkDisplayedLocator(String text){
         Assert.assertTrue(header.displayedLocator("Краснодар"));
     }
+
 }
 
 
