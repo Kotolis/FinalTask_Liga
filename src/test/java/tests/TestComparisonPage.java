@@ -27,9 +27,7 @@ public class TestComparisonPage {
         stepsProductPage.addThreeItemForComparison();
         stepsMainPage.clickOnButtonComparisonInHeader();
         stepsComparisonPage.checkThatTitleComparisonPageIsDisplayed();
-        stepsComparisonPage.closeAlert();
         stepsComparisonPage.checkThatNamesSameInComparisonAndProductPage();
-
         closeWebDriver();
     }
 }

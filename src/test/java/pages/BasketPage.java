@@ -3,13 +3,11 @@ package pages;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.support.FindBy;
 import session.PriceNameButtonBueForCard;
 
 public class BasketPage {
     private SelenideElement addTitleBasket;
-    private SelenideElement addTitleProductInBasket;
     private SelenideElement addTextAmountProducts;
     private SelenideElement addOrderingButton;
     private SelenideElement addCardPrice;
@@ -18,8 +16,6 @@ public class BasketPage {
 
     public BasketPage() {
         addTitleBasket = Selenide.$x("//span[@class = 'c-header-checkout__logo u-ml-0' and text() = 'Моя корзина']");
-
-        addTitleProductInBasket = Selenide.$x("//div[contains(@class, 'c-cart-item__header')]/a[contains(@class, 'c-link ')]");
 
         addTextAmountProducts = Selenide.$x("//span[contains(@class, 'c-cost-line__title')]");
 
@@ -31,12 +27,9 @@ public class BasketPage {
 
         addSumProduct = Selenide.$x("//span[contains(@class, 'c-cost-line__text')]");
 
-
     }
 
     public SelenideElement getTitleBasket(){return addTitleBasket;}
-
-    public SelenideElement titleProductInBasket(){return addTitleProductInBasket;}
 
     public SelenideElement textAmountProducts(){return addTextAmountProducts;}
 
@@ -53,10 +46,6 @@ public class BasketPage {
     private ElementsCollection addAllButtonPlus;
 
 
-    //public String getTitleProductInBasket(){
-     //   return titleProductInBasket().getText();
-    //}
-
      public String getTextAmountProducts(){
         return textAmountProducts().getText();
      }
@@ -66,19 +55,21 @@ public class BasketPage {
      }
 
      public int getOrderPrice(){
-        return Integer.parseInt(addOrderPrice.text().replaceAll("\\D+",""));
+         return Integer.parseInt(addOrderPrice.text().replaceAll("\\D+",""));
      }
 
     public boolean comparisonNameInMainPageAndCart() {
         boolean flag = true;
         for (int i = 0; i < addAllTitleInCart.size(); i++) {
+            System.out.println("Итерация номер " + i);
             if (addAllTitleInCart.get(i).text().equals(PriceNameButtonBueForCard.goods.get(i).name)) {
+                System.out.println("Имя " + addAllTitleInCart.get(i).text() + "равно имени " + PriceNameButtonBueForCard.goods.get(i).name);
             } else {
+                System.out.println(addAllTitleInCart.get(i).text() + "не равно имени " + PriceNameButtonBueForCard.goods.get(i).name);
                 flag = false;
             }
         }
         return flag;
-
     }
 
     public boolean comparisonPriceInCart(){
@@ -90,7 +81,7 @@ public class BasketPage {
              counter += PriceNameButtonBueForCard.goods.get(i).price;
          }
          if (sumProduct!=counter){
-             System.out.println(sumProduct);
+             System.out.println(sumProduct + "не равно "+ counter);
              flag = false;
          }
          return flag;

@@ -6,13 +6,11 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 import session.PriceNameButtonBueForCard;
-import com.codeborne.selenide.Condition;
 
 public class WorkAreaPage {
 
     private SelenideElement addToCartProductDay;
     private SelenideElement addBlockWithProductDay;
-    private SelenideElement addTitleProductDay;
     private SelenideElement addTitleMostViewed;
     private SelenideElement addBlockMostViewed1;
     private SelenideElement addBlockMostViewedWithText;
@@ -23,8 +21,6 @@ public class WorkAreaPage {
 
         addBlockWithProductDay = Selenide.$x("//mvid-day-products-block[.//span[@class = 'title__text' and text() = 'Товары дня']]");
 
-        addTitleProductDay = Selenide.$x("//mvid-day-products-block[contains(@class, 'block ng-star-inserted')]//div[contains(@class, 'title ng-star-inserted')]/a");
-
         addTitleMostViewed = Selenide.$x("//h2[@class = 'title ng-star-inserted' and text() = 'Самые просматриваемые']");
 
         addBlockMostViewed1 = Selenide.$x("//mvid-simple-product-collection-mp[1]");
@@ -33,8 +29,8 @@ public class WorkAreaPage {
 
         addBlockMostViewed2 = Selenide.$x("//mvid-simple-product-collection-mp[2]");
 
-
     }
+
 
     @FindBy(xpath = "//h2[contains(text(), 'Самые просматриваемые')]/..//a/div[text() != '']")
     private ElementsCollection nameMostViewed;
@@ -45,19 +41,15 @@ public class WorkAreaPage {
     @FindBy(xpath = "//h2[contains(text(), 'Самые просматриваемые')]/..//mvid-icon[@type='cart']/..")
     private ElementsCollection addToCartMostViewed;
 
-
     public SelenideElement buttonAddToCartProductDay(){return addToCartProductDay;}
 
     public SelenideElement blockWithProductDay(){return addBlockWithProductDay;}
-
-    public SelenideElement titleProductDay(){return addTitleProductDay;}
 
     public SelenideElement getTitleMostViewed(){return addTitleMostViewed;}
 
     public SelenideElement getBlockMostViewedWithText(){return addBlockMostViewedWithText;}
 
     public SelenideElement getBlockMostViewed2(){return addBlockMostViewed2;}
-
 
 
     public void addToCartProductDayDisplayed(){
@@ -67,35 +59,29 @@ public class WorkAreaPage {
         }
     }
 
-   // public String getTitleProductDay(){
-   //     return titleProductDay().getText();
-   // }
-
     public void addMultipleProducts(){
         PriceNameButtonBueForCard.clearCartList();
         PriceNameButtonBueForCard.elementsCard(nameMostViewed, priceMostViewed, addToCartMostViewed);
-
     }
+
 
     public void clickFewProducts(int productNumber){
         PriceNameButtonBueForCard.goods.get(productNumber-1).button.scrollIntoView("{block: \"center\"}").click();
-
+        PriceNameButtonBueForCard.comparisonElements.add(PriceNameButtonBueForCard.goods.get(productNumber-1));
+        System.out.println("я добавил "+PriceNameButtonBueForCard.goods.get(productNumber-1).name+ " в "+ PriceNameButtonBueForCard.comparisonElements);
+        System.out.println(PriceNameButtonBueForCard.comparisonElements);
     }
 
     public void titleMostViewedVisible(){
         addTitleMostViewed.shouldBe(Condition.visible);
     }
 
-
     public void scrollToFirstBlockMostViewed(){
         addBlockMostViewed1.scrollIntoView("{block: \"center\"}");
     }
 
-    public void nameDisplayForDownloadVerification(){
-        getTitleMostViewed().shouldBe(Condition.visible);
+    public void buttonDisplayForDownloadVerification(){
+        addToCartProductDay.shouldBe(Condition.visible);
     }
-
-
-
 
 }

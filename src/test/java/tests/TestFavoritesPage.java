@@ -32,6 +32,5 @@ public class TestFavoritesPage {
         stepsFavoritesPage.checkThatTitleFavoritesPageIsDisplayed();
         stepsFavoritesPage.checkThatNamesSameInFavoritesAndProductPage();
         closeWebDriver();
-
     }
 }

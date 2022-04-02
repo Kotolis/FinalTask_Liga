@@ -17,6 +17,8 @@ public class StepsFavoritesPage {
     }
 
     public void checkThatNamesSameInFavoritesAndProductPage(){
+        favoritesPage.scrollPageFavorites();
+        favoritesPage.addElementsFavoritesPage();
         Assert.assertTrue(favoritesPage.comparisonNameInProductAndFavoritesPage());
     }
 }

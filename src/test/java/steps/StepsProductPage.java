@@ -1,12 +1,12 @@
 package steps;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import org.testng.Assert;
 import pages.HeaderPage;
 import pages.ProductPage;
 import pages.WorkAreaPage;
+import session.PriceNameButtonBueForCard;
 
 public class StepsProductPage {
 
@@ -17,7 +17,6 @@ public class StepsProductPage {
     public void checkThatPageWithAppleOpen() {
         if (productPage.getPageArea().isDisplayed()) {
             Assert.assertEquals( WebDriverRunner.url(), "https://www.mvideo.ru/product-list-page?q=apple&category=smartfony-205");
-
         }
     }
 
@@ -35,13 +34,13 @@ public class StepsProductPage {
     }
 
     public void clickButtonFilterSort(){
-        productPage.getFilterSort().scrollIntoView("{block: \"center\"}").shouldBe(Condition.visible).click();
+        header.click(productPage.getFilterSort());
         boolean actualCondition = header.checkForDisplay(productPage.getContainerFiltersSort());
         Assert.assertTrue(actualCondition);
     }
 
     public void clickFilterFirstMoreExpensive(){
-        productPage.getFilterFirstMoreExpensive().scrollIntoView("{block: \"center\"}").shouldBe(Condition.visible).click();
+        header.click(productPage.getFilterFirstMoreExpensive());
     }
 
     public void checkThatPageWithFilterOpen() {
@@ -63,6 +62,7 @@ public class StepsProductPage {
 
 
     public void addThreeItemForComparison(){
+        productPage.clearComparisonList();
         workArea.clickFewProducts(1);
         header.getNumberOnComparison( "1");
         workArea.clickFewProducts(2);
@@ -78,6 +78,7 @@ public class StepsProductPage {
     }
 
     public void addThreeItemForFavorites(){
+        productPage.clearComparisonList();
         workArea.clickFewProducts(1);
         header.getNumberOnFavorites( "1");
         workArea.clickFewProducts(2);
@@ -86,5 +87,6 @@ public class StepsProductPage {
         header.getNumberOnFavorites("3");
 
     }
+
 
 }

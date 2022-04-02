@@ -43,6 +43,5 @@ public class TestProductPage {
         stepsProductPage.checkThatAppleNamePresent();
         stepsProductPage.comparisonPriceDescending();
         closeWebDriver();
-
     }
 }

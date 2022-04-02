@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Тесты для M.video">
+    <test name="Тесты главной страницы и хедера">
+        <classes>
+            <class name="tests.TestsMainPage"></class>
+        </classes>
+    </test>
+    <test name="Тесты Корзины">
+        <classes>
+            <class name="tests.TestBasketPage"></class>
+        </classes>
+    </test>
+    <test name="Тесты страницы со списком продуктов">
+        <classes>
+            <class name="tests.TestProductPage"></class>
+        </classes>
+    </test>
+    <test name="Тесты страницы сравнения">
+        <classes>
+            <class name="tests.TestComparisonPage"></class>
+        </classes>
+    </test>
+    <test name="Тесты страницы избранное ">
+        <classes>
+            <class name="tests.TestFavoritesPage"></class>
+        </classes>
+    </test>
+</suite>
+
+

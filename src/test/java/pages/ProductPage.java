@@ -84,9 +84,10 @@ public class ProductPage {
 
         for (int i = 0; i < PriceNameButtonBueForCard.goods.size(); i++){
             if(!PriceNameButtonBueForCard.goods.get(i).name.toLowerCase().contains("apple")){
+                System.out.println(PriceNameButtonBueForCard.goods.get(i).name + "не содержит apple");
                 flag = false;
                 break;
-            }
+            }System.out.println(PriceNameButtonBueForCard.goods.get(i).name + " содержит apple");
         }
         return flag;
     }
@@ -95,8 +96,10 @@ public class ProductPage {
         boolean flag = true;
         for (int i = 0; i < PriceNameButtonBueForCard.goods.size()-1; i++){
             if(PriceNameButtonBueForCard.goods.get(i).price >= PriceNameButtonBueForCard.goods.get(i+1).price){
+                System.out.println(PriceNameButtonBueForCard.goods.get(i).price + "больше или равно " + PriceNameButtonBueForCard.goods.get(i+1).price);
                 flag = true;
             }else {
+                System.out.println(PriceNameButtonBueForCard.goods.get(i).price + "меньше " + PriceNameButtonBueForCard.goods.get(i+1).price);
                 flag = false;
                 break;
             }
@@ -107,6 +110,9 @@ public class ProductPage {
     public void nameProductToCheckPageLoad(){
         nameToCheckPageLoad.shouldBe(Condition.visible);
 
+    }
+    public void clearComparisonList(){
+        PriceNameButtonBueForCard.clearComparisonList();
     }
 
 }

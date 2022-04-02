@@ -3,7 +3,6 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
 
 import java.util.Objects;
 
@@ -28,7 +27,6 @@ public class HeaderPage {
     private SelenideElement amountsItemsInFavorites;
     private SelenideElement locationButton;
     private SelenideElement windowSelectCity;
-    private SelenideElement selectedCity;
 
 
     public HeaderPage(){
@@ -67,9 +65,6 @@ public class HeaderPage {
 
         windowSelectCity = Selenide.$x("//div[contains(@class, 'modal-layout')][.//h3[contains(text(), 'Выберите город')]]");
 
-        selectedCity = Selenide.$x("//span[text() = '%s']");
-
-
     }
 
     public SelenideElement getStatusOrder(){return addStatusOrder;}
@@ -91,7 +86,6 @@ public class HeaderPage {
     public  boolean checkForDisplay(SelenideElement elem){
         return elem.isDisplayed();
     }
-
 
     public boolean checkForEnabled(SelenideElement element) {
         String strClassAttribute = getClassAttribute(element);
@@ -115,9 +109,6 @@ public class HeaderPage {
         addNumberOnTheCart.shouldBe(Condition.text(amount));
     }
 
-    public void clickButtonBasket(){
-        getAddToCart().scrollIntoView("{block: \"center\"}").shouldBe(Condition.visible).click();
-    }
 
     public void click(SelenideElement element){
         element.scrollIntoView("{block: \"center\"}").shouldBe(Condition.visible).click();
@@ -129,14 +120,6 @@ public class HeaderPage {
 
     public String getEnterValue(){
         return inputLine.getValue();
-    }
-
-    public void  clickSearch(){
-        getButtonSearch().scrollIntoView("{block: \"center\"}").shouldBe(Condition.visible).click();
-    }
-
-    public void clickButtonRegistration(){
-        addRegistration.scrollIntoView("{block: \"center\"}").shouldBe(Condition.visible).click();
     }
 
     public void getNumberOnComparison(String amount){
@@ -153,6 +136,10 @@ public class HeaderPage {
 
     public boolean displayedLocator(String text){
        return locationButton.shouldBe(Condition.text(text)).isDisplayed();
+
+    }
+    public void closeForModalWindow(){
+        windowSelectCity.shouldBe(Condition.hidden);
 
     }
 

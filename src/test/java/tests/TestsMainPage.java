@@ -60,11 +60,10 @@ public class TestsMainPage {
         stepsMainPage.clickOnLocationButton();
         stepsMainPage.checkThatWindowSelectCityIsDisplayed();
         stepsMainPage.selectDesiredCity("Краснодар");
-        stepsMainPage.displayTitleToCheckPageLoading();
+        stepsMainPage.displayButtonToCheckPageLoading();
         stepsMainPage.modalWindowIsntDisplay();
         stepsMainPage.checkDisplayedLocator("Краснодар");
-
-
+        closeWebDriver();
 
     }
 }

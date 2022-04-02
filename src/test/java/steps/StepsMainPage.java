@@ -84,7 +84,7 @@ public class StepsMainPage {
     }
 
     public void clickOnButtonBasket() {
-        header.clickButtonBasket();
+        header.click(header.getAddToCart());
     }
 
     public void checkThatTitleMostViewedIsDisplayed() {
@@ -125,11 +125,11 @@ public class StepsMainPage {
     }
 
     public void clickOnButtonSearch() {
-        header.clickSearch();
+        header.click(header.getButtonSearch());
     }
 
     public void clickOnButtonRegistration() {
-        header.clickButtonRegistration();
+        header.click(header.getRegistration());
     }
 
     public void checkThatFormRegistrationIsDisplayed() {
@@ -177,6 +177,7 @@ public class StepsMainPage {
 
     public void selectDesiredCity(String city){
         header.findCity("Краснодар");
+        header.closeForModalWindow();
     }
 
     public void modalWindowIsntDisplay(){
@@ -184,8 +185,8 @@ public class StepsMainPage {
         Assert.assertFalse(actualCondition);
     }
 
-    public void displayTitleToCheckPageLoading(){
-        workArea.nameDisplayForDownloadVerification();
+    public void displayButtonToCheckPageLoading(){
+        workArea.buttonDisplayForDownloadVerification();
     }
 
     public void checkDisplayedLocator(String text){

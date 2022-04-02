@@ -1,6 +1,5 @@
 package steps;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import org.testng.Assert;
 import pages.ComparisonPage;
@@ -16,13 +15,9 @@ public class StepsComparisonPage {
         Assert.assertTrue(actualCondition);
     }
 
-    public void closeAlert(){
-        if(comparisonPage.getCloseAlert().isDisplayed()){
-            comparisonPage.getCloseAlert().shouldBe(Condition.visible).click();
-        }
-    }
-
     public void checkThatNamesSameInComparisonAndProductPage(){
+        comparisonPage.addElementsComparisonPage();
+        System.out.println("Все добавил начинаю сравнивать");
         Assert.assertTrue(comparisonPage.comparisonNameInProductAndComparisonPage());
     }
 }

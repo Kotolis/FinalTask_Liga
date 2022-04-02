@@ -12,6 +12,8 @@ public class PriceNameButtonBueForCard {
     public SelenideElement button;
 
     public static ArrayList<PriceNameButtonBueForCard> goods = new ArrayList<>();
+    public static ArrayList<PriceNameButtonBueForCard> comparisonElements = new ArrayList<>();
+
 
 
     public static void elementsCard(ElementsCollection name, ElementsCollection price, ElementsCollection button){
@@ -22,9 +24,12 @@ public class PriceNameButtonBueForCard {
 
     }
 
+
     public static void clearCartList(){
         goods.clear();
     }
+
+    public static void clearComparisonList(){comparisonElements.clear();}
 
 
     public PriceNameButtonBueForCard(String name, int price,SelenideElement button){
