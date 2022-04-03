@@ -13,6 +13,7 @@ public class BasketPage {
     private SelenideElement addCardPrice;
     private SelenideElement addOrderPrice;
     private SelenideElement addSumProduct;
+    private SelenideElement nameProduct;
 
 
     public BasketPage() {
@@ -28,7 +29,7 @@ public class BasketPage {
 
         addSumProduct = Selenide.$x("//span[contains(@class, 'c-cost-line__text')]");
 
-
+        nameProduct = Selenide.$x("//a[contains(@class, 'c-link c-cart-item__title')]");
 
     }
 
@@ -38,6 +39,7 @@ public class BasketPage {
 
     public SelenideElement getOrderingButton(){return addOrderingButton;}
 
+    public SelenideElement getNameProduct(){return nameProduct;}
 
 
     @FindBy(xpath = "//a[contains(@class, 'c-cart-item__title')]")
@@ -65,11 +67,11 @@ public class BasketPage {
     public boolean comparisonNameInMainPageAndCart() {
         boolean flag = true;
         for (int i = 0; i < addAllTitleInCart.size(); i++) {
-            System.out.println("Итерация номер " + i);
+           // System.out.println("Итерация номер " + i);
             if (addAllTitleInCart.get(i).text().equals(PriceNameButtonBueForCard.goods.get(i).name)) {
-                System.out.println("Имя " + addAllTitleInCart.get(i).text() + "равно имени " + PriceNameButtonBueForCard.goods.get(i).name);
+                //System.out.println("Имя " + addAllTitleInCart.get(i).text() + "равно имени " + PriceNameButtonBueForCard.goods.get(i).name);
             } else {
-                System.out.println(addAllTitleInCart.get(i).text() + "не равно имени " + PriceNameButtonBueForCard.goods.get(i).name);
+                //System.out.println(addAllTitleInCart.get(i).text() + "не равно имени " + PriceNameButtonBueForCard.goods.get(i).name);
                 flag = false;
             }
         }
@@ -85,7 +87,7 @@ public class BasketPage {
              counter += PriceNameButtonBueForCard.goods.get(i).price;
          }
          if (sumProduct!=counter){
-             System.out.println(sumProduct + "не равно "+ counter);
+             //System.out.println(sumProduct + "не равно "+ counter);
              flag = false;
          }
          return flag;

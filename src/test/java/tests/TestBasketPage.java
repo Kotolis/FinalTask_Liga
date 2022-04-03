@@ -14,8 +14,8 @@ public class TestBasketPage {
    private StepsBasketPage stepsBasketPage = new StepsBasketPage();
    private StepsMainPage stepsMainPage = new StepsMainPage();
 
-    @Test
-    public void openingBasket(){
+    @Test(testName = "Переход в корзину")
+    public void transitionToCart(){
         Configuration.pageLoadTimeout = 200000;
         Selenide.open("https://www.mvideo.ru/");
         stepsMainPage.checkThatBlockWithProductDayIsDisplayed();
@@ -23,13 +23,14 @@ public class TestBasketPage {
         stepsMainPage.clickOnButtonBasket();
         stepsBasketPage.checkThatUrlBasketCorrect();
         stepsBasketPage.checkThatTitleBasketIsDisplayed();
+        stepsBasketPage.checkThatProductInCartIsDisplayed();
         stepsBasketPage.checkThatOrderingButtonIsDisplayed();
         stepsBasketPage.checkCorrectAmountProductsInBasket();
         stepsBasketPage.checkThatPriceInOrderAndCardSame();
         closeWebDriver();
     }
 
-    @Test
+    @Test(testName = "Добавление в корзину два товара")
     public void addTwoItemsToCart(){
         Configuration.pageLoadTimeout = 200000;
         Selenide.open("https://www.mvideo.ru/");
@@ -40,7 +41,7 @@ public class TestBasketPage {
         stepsMainPage.clickOnButtonBasket();
         stepsBasketPage.checkThatUrlBasketCorrect();
         stepsBasketPage.checkComparisonNameInMainPageAndCart();
-        stepsBasketPage.comparisonPriceInCardAndOrder();
+        stepsBasketPage.comparisonSumPriceInCardAndOrder();
         closeWebDriver();
 
     }

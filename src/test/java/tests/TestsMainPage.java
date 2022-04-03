@@ -11,7 +11,7 @@ public class TestsMainPage {
 
     private StepsMainPage stepsMainPage = new StepsMainPage();
 
-    @Test
+    @Test(testName = "Проверка шапки главной страницы mvideo")
     public void checkHeaderOnMainPage(){
         Configuration.pageLoadTimeout = 200000;
         Selenide.open("https://www.mvideo.ru/");
@@ -28,7 +28,7 @@ public class TestsMainPage {
         closeWebDriver();
     }
 
-    @Test
+    @Test(testName = "Проверка активации кнопки корзины")
     public void checkCartButtonActivation(){
         Configuration.pageLoadTimeout = 200000;
         Selenide.open("https://www.mvideo.ru/");
@@ -39,7 +39,7 @@ public class TestsMainPage {
         closeWebDriver();
     }
 
-    @Test
+    @Test(testName = "Проверка модального окна авторизации клиента")
     public void checkClientAuthorizationModalWindow(){
         Configuration.pageLoadTimeout = 200000;
         Selenide.open("https://www.mvideo.ru/");
@@ -54,7 +54,7 @@ public class TestsMainPage {
 
     }
 
-    @Test
+    @Test(testName = "Проверка изменения города")
     public void checkCityChange(){
         Configuration.pageLoadTimeout = 200000;
         Selenide.open("https://www.mvideo.ru/");

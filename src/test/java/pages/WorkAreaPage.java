@@ -71,8 +71,8 @@ public class WorkAreaPage {
     public void clickFewProducts(int productNumber){
         PriceNameButtonBueForCard.goods.get(productNumber-1).button.scrollIntoView("{block: \"center\"}").click();
         PriceNameButtonBueForCard.comparisonElements.add(PriceNameButtonBueForCard.goods.get(productNumber-1));
-        System.out.println("я добавил "+PriceNameButtonBueForCard.goods.get(productNumber-1).name+ " в "+ PriceNameButtonBueForCard.comparisonElements);
-        System.out.println(PriceNameButtonBueForCard.comparisonElements);
+        //System.out.println("я добавил "+PriceNameButtonBueForCard.goods.get(productNumber-1).name+ " в "+ PriceNameButtonBueForCard.comparisonElements);
+        //System.out.println(PriceNameButtonBueForCard.comparisonElements);
     }
 
     public void titleMostViewedVisible(){

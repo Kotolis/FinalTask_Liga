@@ -18,7 +18,7 @@ public class TestFavoritesPage {
     private StepsProductPage stepsProductPage = new StepsProductPage();
     private StepsFavoritesPage stepsFavoritesPage = new StepsFavoritesPage();
 
-    @Test
+    @Test(testName = "Проверка добавления товаров в список избранного")
     public void checkAdditionsToFavoritesList(){
         Configuration.pageLoadTimeout = 200000;
         Configuration.browserSize = "1920x1080";

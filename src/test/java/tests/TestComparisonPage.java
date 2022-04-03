@@ -15,7 +15,7 @@ public class TestComparisonPage {
     private StepsComparisonPage stepsComparisonPage = new StepsComparisonPage();
     private StepsProductPage stepsProductPage = new StepsProductPage();
 
-    @Test
+    @Test(testName = "Проверка добавления товаров в список сравнения")
     public void checkAdditionsToComparisonList(){
         Configuration.pageLoadTimeout = 200000;
         Configuration.browserSize = "1920x1080";

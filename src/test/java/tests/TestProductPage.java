@@ -16,7 +16,7 @@ public class TestProductPage {
     private StepsMainPage stepsMainPage = new StepsMainPage();
     private StepsProductPage stepsProductPage = new StepsProductPage();
 
-    @Test
+    @Test(testName = "Поиск товаров")
     public void productSearch() {
         Configuration.pageLoadTimeout = 200000;
         Selenide.open("https://www.mvideo.ru/");
@@ -29,7 +29,7 @@ public class TestProductPage {
 
     }
 
-    @Test
+    @Test(testName = "Сорторовка товаров в листинге")
     public void sortingItemsInTheListing(){
         Configuration.pageLoadTimeout = 200000;
         Selenide.open("https://www.mvideo.ru/");
@@ -37,6 +37,7 @@ public class TestProductPage {
         stepsMainPage.checkThatValueEnterCorrect();
         stepsMainPage.clickOnButtonSearch();
         stepsProductPage.checkThatPageWithAppleOpen();
+        stepsProductPage.checkThatAppleNamePresent();
         stepsProductPage.checkThatFilterSortIsDisplayed();
         stepsProductPage.clickButtonFilterSort();
         stepsProductPage.clickFilterFirstMoreExpensive();

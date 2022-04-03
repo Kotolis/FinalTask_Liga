@@ -51,22 +51,22 @@ public class FavoritesPage {
     public boolean comparisonNameInProductAndFavoritesPage() {
         boolean flag = true;
         ArrayList<String> listNameFavorites = new ArrayList<String>();
-        System.out.println("Начинаю сравнивать то что добавлял и что добавилось, сначала сверю размер списков");
+        //System.out.println("Начинаю сравнивать то что добавлял и что добавилось, сначала сверю размер списков");
         for (int i = 0; i < PriceNameButtonBueForCard.comparisonElements.size(); i++) {
             listNameFavorites.add(PriceNameButtonBueForCard.comparisonElements.get(i).name);
         }
         if (nameProductInFavorites.size() == listNameFavorites.size()) {
             for (int i = 0; i < listNameFavorites.size(); i++) {
-                System.out.println("Содержится ли элемент " + ComparisonCardsElements.card.get(i).name + " в списке");
+                //System.out.println("Содержится ли элемент " + ComparisonCardsElements.card.get(i).name + " в списке");
                 if (listNameFavorites.contains(ComparisonCardsElements.card.get(i).name)) {
-                    System.out.println("Условие прошло у нас есть " + ComparisonCardsElements.card.get(i).name + " в:");
+                   // System.out.println("Условие прошло у нас есть " + ComparisonCardsElements.card.get(i).name + " в:");
                     for (int j = 0; j < PriceNameButtonBueForCard.comparisonElements.size(); j++) {
-                        System.out.println(PriceNameButtonBueForCard.comparisonElements.get(j).name);
+                       // System.out.println(PriceNameButtonBueForCard.comparisonElements.get(j).name);
                     }
                 } else {
                     System.out.println("Условие не прошло у нас нет " + ComparisonCardsElements.card.get(i).name + " в:");
                     for (int j = 0; j < PriceNameButtonBueForCard.comparisonElements.size(); j++) {
-                        System.out.println(PriceNameButtonBueForCard.comparisonElements.get(j).name);
+                       // System.out.println(PriceNameButtonBueForCard.comparisonElements.get(j).name);
                     }
                     flag = false;
                     break;
