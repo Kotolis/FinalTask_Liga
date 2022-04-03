@@ -2,6 +2,8 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import steps.StepsMainPage;
@@ -11,7 +13,10 @@ public class TestsMainPage {
 
     private StepsMainPage stepsMainPage = new StepsMainPage();
 
-    @Test(testName = "Проверка шапки главной страницы mvideo")
+    @Epic("Тесты для проверки сайта mvideo")
+    @Feature("Проверки главной страницы и шапки сайта")
+    @Test(testName = "Проверка шапки главной страницы mvideo",
+            description = "Проверка шапки главной страницы mvideo")
     public void checkHeaderOnMainPage(){
         Configuration.pageLoadTimeout = 200000;
         Selenide.open("https://www.mvideo.ru/");
@@ -28,7 +33,10 @@ public class TestsMainPage {
         closeWebDriver();
     }
 
-    @Test(testName = "Проверка активации кнопки корзины")
+    @Epic("Тесты для проверки сайта mvideo")
+    @Feature("Проверки главной страницы и шапки сайта")
+    @Test(testName = "Проверка активации кнопки корзины",
+            description = "Проверки главной страницы и шапки сайта")
     public void checkCartButtonActivation(){
         Configuration.pageLoadTimeout = 200000;
         Selenide.open("https://www.mvideo.ru/");
@@ -39,7 +47,10 @@ public class TestsMainPage {
         closeWebDriver();
     }
 
-    @Test(testName = "Проверка модального окна авторизации клиента")
+    @Epic("Тесты для проверки сайта mvideo")
+    @Feature("Проверки главной страницы и шапки сайта")
+    @Test(testName = "Проверка модального окна авторизации клиента",
+            description = "Проверка модального окна авторизации клиента")
     public void checkClientAuthorizationModalWindow(){
         Configuration.pageLoadTimeout = 200000;
         Selenide.open("https://www.mvideo.ru/");
@@ -54,7 +65,10 @@ public class TestsMainPage {
 
     }
 
-    @Test(testName = "Проверка изменения города")
+    @Epic("Тесты для проверки сайта mvideo")
+    @Feature("Проверки главной страницы и шапки сайта")
+    @Test(testName = "Проверка изменения города",
+            description = "Проверка изменения города")
     public void checkCityChange(){
         Configuration.pageLoadTimeout = 200000;
         Selenide.open("https://www.mvideo.ru/");
@@ -67,7 +81,7 @@ public class TestsMainPage {
 
     }
 
-    @AfterMethod
+    @AfterMethod(description = "закрытие браузера")
     public void close(){
         closeWebDriver();
     }

@@ -2,6 +2,8 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import steps.StepsBasketPage;
@@ -16,7 +18,9 @@ public class TestProductPage {
     private StepsMainPage stepsMainPage = new StepsMainPage();
     private StepsProductPage stepsProductPage = new StepsProductPage();
 
-    @Test(testName = "Поиск товаров")
+    @Epic("Тесты для проверки сайта mvideo")
+    @Feature("Проверки страницы листинга")
+    @Test(testName = "Поиск товаров", description = "Поиск товаров")
     public void productSearch() {
         Configuration.pageLoadTimeout = 200000;
         Selenide.open("https://www.mvideo.ru/");
@@ -29,7 +33,9 @@ public class TestProductPage {
 
     }
 
-    @Test(testName = "Сорторовка товаров в листинге")
+    @Epic("Тесты для проверки сайта mvideo")
+    @Feature("Проверки страницы листинга")
+    @Test(testName = "Сорторовка товаров в листинге", description = "Сорторовка товаров в листинге")
     public void sortingItemsInTheListing(){
         Configuration.pageLoadTimeout = 200000;
         Selenide.open("https://www.mvideo.ru/");
@@ -47,7 +53,7 @@ public class TestProductPage {
         closeWebDriver();
     }
 
-    @AfterMethod
+    @AfterMethod(description = "закрытие браузера")
     public void close(){
         closeWebDriver();
     }

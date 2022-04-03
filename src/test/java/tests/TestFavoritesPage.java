@@ -2,6 +2,8 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import steps.StepsComparisonPage;
@@ -18,7 +20,10 @@ public class TestFavoritesPage {
     private StepsProductPage stepsProductPage = new StepsProductPage();
     private StepsFavoritesPage stepsFavoritesPage = new StepsFavoritesPage();
 
-    @Test(testName = "Проверка добавления товаров в список избранного")
+    @Epic("Тесты для проверки сайта mvideo")
+    @Feature("Проверки страницы 'Избранное'")
+    @Test(testName = "Проверка добавления товаров в список избранного",
+            description = "Проверка добавления товаров в список избранного")
     public void checkAdditionsToFavoritesList(){
         Configuration.pageLoadTimeout = 200000;
         Configuration.browserSize = "1920x1080";
@@ -35,7 +40,7 @@ public class TestFavoritesPage {
         closeWebDriver();
     }
 
-    @AfterMethod
+    @AfterMethod(description = "закрытие браузера")
     public void close(){
         closeWebDriver();
     }

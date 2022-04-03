@@ -2,6 +2,8 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import steps.StepsComparisonPage;
@@ -15,7 +17,10 @@ public class TestComparisonPage {
     private StepsComparisonPage stepsComparisonPage = new StepsComparisonPage();
     private StepsProductPage stepsProductPage = new StepsProductPage();
 
-    @Test(testName = "Проверка добавления товаров в список сравнения")
+    @Epic("Тесты для проверки сайта mvideo")
+    @Feature("Проверки страницы 'Сравнение'")
+    @Test(testName = "Проверка добавления товаров в список сравнения",
+            description = "Проверка добавления товаров в список сравнения")
     public void checkAdditionsToComparisonList(){
         Configuration.pageLoadTimeout = 200000;
         Configuration.browserSize = "1920x1080";
@@ -32,7 +37,7 @@ public class TestComparisonPage {
         closeWebDriver();
     }
 
-    @AfterMethod
+    @AfterMethod(description = "закрытие браузера")
     public void close(){
         closeWebDriver();
     }

@@ -2,6 +2,8 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import steps.StepsBasketPage;
@@ -14,7 +16,9 @@ public class TestBasketPage {
    private StepsBasketPage stepsBasketPage = new StepsBasketPage();
    private StepsMainPage stepsMainPage = new StepsMainPage();
 
-    @Test(testName = "Переход в корзину")
+    @Epic("Тесты для проверки сайта mvideo")
+    @Feature("Проверки страницы 'Корзина'")
+    @Test(testName = "Переход в корзину", description = "Переход в корзину")
     public void transitionToCart(){
         Configuration.pageLoadTimeout = 200000;
         Selenide.open("https://www.mvideo.ru/");
@@ -30,7 +34,9 @@ public class TestBasketPage {
         closeWebDriver();
     }
 
-    @Test(testName = "Добавление в корзину два товара")
+    @Epic("Тесты для проверки сайта mvideo")
+    @Feature("Проверки страницы 'Корзина'")
+    @Test(testName = "Добавление в корзину два товара", description = "Добавление в корзину два товара")
     public void addTwoItemsToCart(){
         Configuration.pageLoadTimeout = 200000;
         Selenide.open("https://www.mvideo.ru/");
@@ -45,7 +51,7 @@ public class TestBasketPage {
         closeWebDriver();
 
     }
-    @AfterMethod
+    @AfterMethod(description = "закрытие браузера")
     public void close(){
         closeWebDriver();
     }
